@@ -4,9 +4,13 @@ using UnityEngine;
 
 public class Movimiento : MonoBehaviour
 {
-    // Increase these values if movement is too slow
-    [SerializeField] private float velocidadCaminata = 4f; // Increased from 4f
+
+    [SerializeField] private float velocidadCaminata = 4f; 
     [SerializeField] private float alturaSalto = 4f;
+    [SerializeField] private float velInicialSalto = 24f;
+    [SerializeField] private LayerMask capaDeSalto;
+
+    private BoxCollider2D boxCollider; 
 
     private Rigidbody2D rb;
 
@@ -19,7 +23,17 @@ public class Movimiento : MonoBehaviour
     public void Moverse(float movimientoX)
     {
 
-            rb.velocity = new Vector2(movimientoX * velocidadCaminata, rb.velocity.y);
+            rb.linearVelocity = new Vector2(movimientoX * velocidadCaminata, rb.linearVelocity.y);
 
+    }
+
+    public void Saltar(bool debeSaltar)
+    {
+        if (!boxCollider.IsTouchingLayers(capaDeSalto)) {return; }
+
+        if (debeSaltar)
+        {
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, velInicialSalto);
+        }
     }
 }
