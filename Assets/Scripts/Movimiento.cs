@@ -7,17 +7,20 @@ public class Movimiento : MonoBehaviour
 
     [SerializeField] private float velocidadCaminata = 4f; 
     [SerializeField] private float alturaSalto = 4f;
-    [SerializeField] private float velInicialSalto = 24f;
+    //[SerializeField] private float velInicialSalto = 24f;
     [SerializeField] private LayerMask capaDeSalto;
 
     private BoxCollider2D boxCollider; 
-
     private Rigidbody2D rb;
+    private float velInicialSalto;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         boxCollider = GetComponent<BoxCollider2D>();
+
+        float gravedad = Physics2D.gravity.y * rb.gravityScale;
+        velInicialSalto = Mathf.Sqrt(-2 * gravedad * alturaSalto);
     }
 
     public void Moverse(float movimientoX)
