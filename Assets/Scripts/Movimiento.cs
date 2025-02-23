@@ -17,7 +17,7 @@ public class Movimiento : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-
+        boxCollider = GetComponent<BoxCollider2D>();
     }
 
     public void Moverse(float movimientoX)
