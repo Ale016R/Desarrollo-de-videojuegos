@@ -17,6 +17,7 @@ public class ControlJugador : MonoBehaviour
     void Update()
     {
             movimiento.Moverse(entradaControl.x);
+            movimiento.MoverseVertical(entradaControl.y);
 
     }
     public void AlMoverse(InputAction.CallbackContext context)
