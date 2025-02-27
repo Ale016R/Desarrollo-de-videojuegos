@@ -6,9 +6,11 @@ public class Movimiento : MonoBehaviour
 {
     [SerializeField] private float velocidadCaminata = 4f; 
     [SerializeField] private float alturaSalto = 4f;
+    [SerializeField] private int contadorSaltos = 2;
     [SerializeField] private LayerMask capaDeSalto;
     [SerializeField] private LayerMask capaTrampas;
     [SerializeField] private LayerMask capaEscalera;
+    [SerializeField] private LayerMask capaSuelo;
     [SerializeField] private float velocidadEscalada = 4f; 
 
     private BoxCollider2D boxCollider; 
@@ -18,6 +20,8 @@ public class Movimiento : MonoBehaviour
     private bool estaEnEscalera = false;
     private float inputVertical = 0f;
     private float gravedadOriginal;
+    private int saltosRestantes;
+
 
     private void Start()
     {
@@ -27,14 +31,14 @@ public class Movimiento : MonoBehaviour
         gravedadOriginal = rb.gravityScale;
         float gravedad = Physics2D.gravity.y * rb.gravityScale;
         velInicialSalto = Mathf.Sqrt(-2 * gravedad * alturaSalto);
+        saltosRestantes = contadorSaltos; 
     }
 
     private void Update()
     {
      
         bool tocandoEscalera = boxCollider.IsTouchingLayers(capaEscalera);
-        
-       
+
         if (tocandoEscalera && Mathf.Abs(inputVertical) > 0.1f)
         {
             estaEnEscalera = true;
@@ -44,7 +48,6 @@ public class Movimiento : MonoBehaviour
             estaEnEscalera = false;
         }
 
-        // Manejar física de la escalera
         if (estaEnEscalera)
         {
             rb.gravityScale = 0f;
@@ -55,7 +58,7 @@ public class Movimiento : MonoBehaviour
             rb.gravityScale = gravedadOriginal;
         }
 
-        // Detectar trampas
+      
         if (boxCollider.IsTouchingLayers(capaTrampas))
         {
             RecibirDaño();
@@ -83,12 +86,28 @@ public class Movimiento : MonoBehaviour
 
     public void Saltar(bool debeSaltar)
     {
-        if (estaEnEscalera) return; 
-        if (!boxCollider.IsTouchingLayers(capaDeSalto)) return;
+        if (estaEnEscalera) return;
+
+        bool tocandoSuelo = boxCollider.IsTouchingLayers(capaSuelo);
 
         if (debeSaltar)
         {
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x, velInicialSalto);
+            if (tocandoSuelo) 
+            {
+                rb.linearVelocity = new Vector2(rb.linearVelocity.x, velInicialSalto);
+          
+                saltosRestantes = contadorSaltos;
+            }
+            else if (saltosRestantes > 0) 
+            {
+                rb.linearVelocity = new Vector2(rb.linearVelocity.x, velInicialSalto);
+                saltosRestantes--;
+             
+                Debug.Log("Saltos extras restantes: " + saltosRestantes);
+            }
         }
+       
+
+        
     }
 }
