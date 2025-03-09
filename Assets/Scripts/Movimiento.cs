@@ -112,4 +112,12 @@ public class Movimiento : MonoBehaviour
 
         
     }
+
+    public void VoltearTransform(float movimientoX)
+    {
+        transform.localScale = new Vector2(
+            Mathf.Sign(movimientoX) * Mathf.Abs(transform.localScale.x),
+            transform.localScale.y
+        );
+    }
 }
