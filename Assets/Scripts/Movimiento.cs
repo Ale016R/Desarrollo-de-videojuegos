@@ -12,7 +12,7 @@ public class Movimiento : MonoBehaviour
     [SerializeField] private LayerMask capaEscalera;
     [SerializeField] private LayerMask capaSuelo;
     [SerializeField] private float velocidadEscalada = 4f; 
-
+    private Animator animator;
     private BoxCollider2D boxCollider; 
     private Rigidbody2D rb;
     private float velInicialSalto;
@@ -32,6 +32,7 @@ public class Movimiento : MonoBehaviour
         float gravedad = Physics2D.gravity.y * rb.gravityScale;
         velInicialSalto = Mathf.Sqrt(-2 * gravedad * alturaSalto);
         saltosRestantes = contadorSaltos; 
+        animator = GetComponent<Animator>();
     }
 
     private void Update()
@@ -76,6 +77,7 @@ public class Movimiento : MonoBehaviour
     public void Moverse(float movimientoX)
     {
         rb.linearVelocity = new Vector2(movimientoX * velocidadCaminata, rb.linearVelocity.y);
+        animator.SetBool("estaCorriendo", movimientoX != 0);
     }
 
    
