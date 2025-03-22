@@ -7,10 +7,12 @@ public class ControlJugador : MonoBehaviour
 {
     private Movimiento movimiento;
     private Vector2 entradaControl;
+    private LanzaProyectiles lanzaProyectiles; 
 
     void Start()
     {
         movimiento = GetComponent<Movimiento>();
+        lanzaProyectiles = GetComponent<LanzaProyectiles>();
 
     }
 
@@ -32,6 +34,15 @@ public class ControlJugador : MonoBehaviour
     public void AlSaltar(InputAction.CallbackContext context)
     {
         movimiento.Saltar(context.action.triggered);
+    }
+
+    public void AlLanzar(InputAction.CallbackContext context)
+    {
+        if (!context.action.triggered)
+        {
+            return;
+        }
+        lanzaProyectiles.Lanzar();
     }
 
 }

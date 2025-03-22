@@ -22,7 +22,7 @@ public class ControlEnemigo : MonoBehaviour
     void Update()
     {
         movimiento.VoltearTransform(direccionMovimiento.x);
-        DetectarSuelo ();
+        DetectarSuelo();
         movimiento.Moverse(direccionMovimiento.x);
     }
 
