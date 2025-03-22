@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Movimiento : MonoBehaviour
 {
+    [Range(0, 1)]
+    [SerializeField] private float modificadorVelSalto = 0.5f;
     [SerializeField] private float velocidadCaminata = 4f; 
     [SerializeField] private float alturaSalto = 4f;
     [SerializeField] private int contadorSaltos = 2;
@@ -11,11 +13,13 @@ public class Movimiento : MonoBehaviour
     [SerializeField] private LayerMask capaTrampas;
     [SerializeField] private LayerMask capaEscalera;
     [SerializeField] private LayerMask capaSuelo;
-    [SerializeField] private float velocidadEscalada = 4f; 
+    [SerializeField] private float velocidadEscalada = 4f;
+    [SerializeField] private LayerMask capaDeEscalera;
+    private float escalaGravedad = 1f; 
     private Animator animator;
     private BoxCollider2D boxCollider; 
     private Rigidbody2D rb;
-    private float velInicialSalto;
+    /*private float velInicialSalto;*/
     private SaludJugador saludJugador;
     private bool estaEnEscalera = false;
     private float inputVertical = 0f;
@@ -30,9 +34,10 @@ public class Movimiento : MonoBehaviour
         saludJugador = GetComponent<SaludJugador>();
         gravedadOriginal = rb.gravityScale;
         float gravedad = Physics2D.gravity.y * rb.gravityScale;
-        velInicialSalto = Mathf.Sqrt(-2 * gravedad * alturaSalto);
+      //  velInicialSalto = Mathf.Sqrt(-2 * gravedad * alturaSalto);
         saltosRestantes = contadorSaltos; 
         animator = GetComponent<Animator>();
+        escalaGravedad = rb.gravityScale;
     }
 
     private void Update()
@@ -92,7 +97,7 @@ public class Movimiento : MonoBehaviour
 
         bool tocandoSuelo = boxCollider.IsTouchingLayers(capaSuelo);
 
-        if (debeSaltar)
+        /*if (debeSaltar)
         {
             if (tocandoSuelo) 
             {
@@ -107,6 +112,19 @@ public class Movimiento : MonoBehaviour
              
                 Debug.Log("Saltos extras restantes: " + saltosRestantes);
             }
+        }*/
+
+        if(debeSaltar){
+            if(boxCollider.IsTouchingLayers(capaDeSalto))
+            {
+                rb.linearVelocity = new Vector2(rb.linearVelocity.x, Mathf.Sqrt(-2f * escalaGravedad * Physics2D.gravity.y * alturaSalto));
+            }
+        }else 
+        {
+            if(rb.linearVelocity.y > Mathf.Epsilon)
+            {
+                rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.y * modificadorVelSalto);
+            }
         }
        
 
@@ -119,5 +137,16 @@ public class Movimiento : MonoBehaviour
             Mathf.Sign(movimientoX) * Mathf.Abs(transform.localScale.x),
             transform.localScale.y
         );
+    }
+
+    public void Escalar(float movimientoY)
+    {
+        if (!boxCollider.IsTouchingLayers(capaDeEscalera))
+        {
+            rb.gravityScale = escalaGravedad;
+            return;
+        }
+        rb.linearVelocity = new Vector2(rb.linearVelocity.x, movimientoY * velocidadEscalada);
+        rb.gravityScale = 0f; 
     }
 }

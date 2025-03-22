@@ -331,6 +331,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9298248822194e91917bebaffe73185, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  modificadorVelSalto: 0.782
   velocidadCaminata: 4
   alturaSalto: 1
   contadorSaltos: 3
@@ -346,7 +347,10 @@ MonoBehaviour:
   capaSuelo:
     serializedVersion: 2
     m_Bits: 64
-  velocidadEscalada: 4
+  velocidadEscalada: 8
+  capaDeEscalera:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!114 &233956837455189195
 MonoBehaviour:
   m_ObjectHideFlags: 0
