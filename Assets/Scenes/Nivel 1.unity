@@ -719,6 +719,9 @@ GameObject:
   - component: {fileID: 1567793326}
   - component: {fileID: 1567793325}
   - component: {fileID: 1567793330}
+  - component: {fileID: 1567793333}
+  - component: {fileID: 1567793332}
+  - component: {fileID: 1567793331}
   m_Layer: 0
   m_Name: Pig Enemie
   m_TagString: Untagged
@@ -760,7 +763,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.08771944, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -770,7 +773,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 0.8333333}
+  m_Size: {x: 0.8245611, y: 0.8333333}
   m_EdgeRadius: 0
 --- !u!50 &1567793326
 Rigidbody2D:
@@ -910,6 +913,53 @@ MonoBehaviour:
   layerSuelo:
     serializedVersion: 2
     m_Bits: 64
+--- !u!114 &1567793331
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1567793324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 287ee9ecae8bc4d9db479a35516d0b27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cantAtaque: 1
+--- !u!114 &1567793332
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1567793324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96ad9c3e2e12d47e1beaa24daada149b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  equipo: 2
+--- !u!114 &1567793333
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1567793324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a814be31d9b164e09a0d90430a0b85e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  saludMax: 2
+  destruirAlMorir: 1
+  tiempoEnDestruirse: 0
+  alPerderSalud:
+    m_PersistentCalls:
+      m_Calls: []
+  alMorir:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1742916102
 GameObject:
   m_ObjectHideFlags: 0
@@ -924,6 +974,8 @@ GameObject:
   - component: {fileID: 1742916106}
   - component: {fileID: 1742916105}
   - component: {fileID: 1742916104}
+  - component: {fileID: 1742916110}
+  - component: {fileID: 1742916109}
   m_Layer: 8
   m_Name: Tilemap trampas
   m_TagString: Untagged
@@ -1043,7 +1095,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1742916102}
-  m_BodyType: 2
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -1059,7 +1111,7 @@ Rigidbody2D:
     serializedVersion: 2
     m_Bits: 0
   m_Interpolate: 0
-  m_SleepingMode: 1
+  m_SleepingMode: 0
   m_CollisionDetection: 0
   m_Constraints: 0
 --- !u!19719996 &1742916106
@@ -1248,6 +1300,32 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!114 &1742916109
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1742916102}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 287ee9ecae8bc4d9db479a35516d0b27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cantAtaque: 1
+--- !u!114 &1742916110
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1742916102}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96ad9c3e2e12d47e1beaa24daada149b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  equipo: 0
 --- !u!1 &1901170641
 GameObject:
   m_ObjectHideFlags: 0
@@ -1803,6 +1881,9 @@ GameObject:
   - component: {fileID: 1957996801}
   - component: {fileID: 1957996805}
   - component: {fileID: 1957996806}
+  - component: {fileID: 1957996810}
+  - component: {fileID: 1957996809}
+  - component: {fileID: 1957996808}
   m_Layer: 0
   m_Name: Jugador
   m_TagString: Untagged
@@ -2111,7 +2192,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1957996794}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1f4bf125783784a17a5ff08ee81d3f07, type: 3}
   m_Name: 
@@ -2147,6 +2228,53 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1957996808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1957996794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 287ee9ecae8bc4d9db479a35516d0b27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cantAtaque: 1
+--- !u!114 &1957996809
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1957996794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96ad9c3e2e12d47e1beaa24daada149b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  equipo: 1
+--- !u!114 &1957996810
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1957996794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a814be31d9b164e09a0d90430a0b85e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  saludMax: 3
+  destruirAlMorir: 1
+  tiempoEnDestruirse: 0
+  alPerderSalud:
+    m_PersistentCalls:
+      m_Calls: []
+  alMorir:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1989018907
 GameObject:
   m_ObjectHideFlags: 0
@@ -2249,8 +2377,69 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 29298716197196121, guid: c728d8128390a4a138d72736728a5ba5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1991213590}
+    - targetCorrespondingSourceObject: {fileID: 29298716197196121, guid: c728d8128390a4a138d72736728a5ba5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1991213589}
+    - targetCorrespondingSourceObject: {fileID: 29298716197196121, guid: c728d8128390a4a138d72736728a5ba5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1991213588}
   m_SourcePrefab: {fileID: 100100000, guid: c728d8128390a4a138d72736728a5ba5, type: 3}
+--- !u!1 &1991213587 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 29298716197196121, guid: c728d8128390a4a138d72736728a5ba5, type: 3}
+  m_PrefabInstance: {fileID: 1991213586}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1991213588
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1991213587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 287ee9ecae8bc4d9db479a35516d0b27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cantAtaque: 1
+--- !u!114 &1991213589
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1991213587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a814be31d9b164e09a0d90430a0b85e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  saludMax: 2
+  destruirAlMorir: 1
+  tiempoEnDestruirse: 0
+  alPerderSalud:
+    m_PersistentCalls:
+      m_Calls: []
+  alMorir:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &1991213590
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1991213587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96ad9c3e2e12d47e1beaa24daada149b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  equipo: 1
 --- !u!1 &1993538162
 GameObject:
   m_ObjectHideFlags: 0
