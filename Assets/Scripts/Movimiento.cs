@@ -7,6 +7,7 @@ public class Movimiento : MonoBehaviour
     [Range(0, 1)]
     [SerializeField] private float modificadorVelSalto = 0.5f;
     [SerializeField] private float velocidadCaminata = 4f; 
+    [SerializeField] private float velocidadCorrer = 8f;
     [SerializeField] private float alturaSalto = 4f;
     [SerializeField] private int contadorSaltos = 2;
     [SerializeField] private LayerMask capaDeSalto;
@@ -25,6 +26,8 @@ public class Movimiento : MonoBehaviour
     private float inputVertical = 0f;
     private float gravedadOriginal;
     private int saltosRestantes;
+    private float velocidadActual;
+    private bool corriendo = false;
 
 
     private void Start()
@@ -81,8 +84,12 @@ public class Movimiento : MonoBehaviour
 
     public void Moverse(float movimientoX)
     {
-        rb.linearVelocity = new Vector2(movimientoX * velocidadCaminata, rb.linearVelocity.y);
-        animator.SetBool("estaCorriendo", movimientoX != 0);
+        velocidadActual = corriendo ? velocidadCorrer : velocidadCaminata;
+        rb.linearVelocity = new Vector2(movimientoX * velocidadActual, rb.linearVelocity.y);
+    }
+    public void ActivarCorrer(bool estado)
+    {
+        corriendo = estado;
     }
 
    

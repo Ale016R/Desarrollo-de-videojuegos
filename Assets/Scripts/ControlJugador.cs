@@ -46,4 +46,17 @@ public class ControlJugador : MonoBehaviour
         lanzaProyectiles.Lanzar();
     }
 
+    public void AlCorrer(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            movimiento.ActivarCorrer(true);
+        }
+        else if (context.canceled)
+        {
+            movimiento.ActivarCorrer(false);
+        }
+    }
+
+
 }

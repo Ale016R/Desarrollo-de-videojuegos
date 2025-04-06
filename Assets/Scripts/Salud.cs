@@ -11,6 +11,9 @@ public class Salud : MonoBehaviour
     [SerializeField] private float tiempoEnDestruirse = 0f;
     [SerializeField] private UnityEvent<float> alPerderSalud;
     [SerializeField] private UnityEvent alMorir; 
+    [SerializeField] private float tiempoInmunidad = 2f;
+    private bool esInmune = false;
+ 
 
     private float saludActual;
     private Animator animator;
@@ -52,16 +55,20 @@ public class Salud : MonoBehaviour
 
     public void PerderSalud(float saludPerdida)
     {
+        if (esInmune || estaMuerto) return;
+
         saludActual = Mathf.Max(saludActual - saludPerdida, 0);
         alPerderSalud?.Invoke(saludPerdida);
         alActualizarSalud?.Invoke();
-        if(saludActual == 0)
+
+        if (saludActual == 0)
         {
             Morir();
-        } else {
-
         }
+
+        StartCoroutine(ActivarInmunidad());
     }
+
 
     private void Morir()
     {
@@ -76,9 +83,13 @@ public class Salud : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
+    private IEnumerator ActivarInmunidad()
     {
-        
+        esInmune = true;
+        yield return new WaitForSeconds(tiempoInmunidad);
+        esInmune = false;
     }
+
+
+
 }
