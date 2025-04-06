@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 639843839489074495}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.72, y: -0.63, z: 0}
+  m_LocalPosition: {x: 0.72, y: -0.14, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -48,6 +48,7 @@ GameObject:
   - component: {fileID: 4376578120861325575}
   - component: {fileID: 4763999096059088927}
   - component: {fileID: 4563129410125414217}
+  - component: {fileID: 4437022297484295114}
   m_Layer: 0
   m_Name: Pig Enemie
   m_TagString: Untagged
@@ -285,3 +286,35 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cantAtaque: 1
+--- !u!114 &4437022297484295114
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7509386946799499686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9298248822194e91917bebaffe73185, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  modificadorVelSalto: 0.5
+  velocidadCaminata: 4
+  alturaSalto: 4
+  contadorSaltos: 2
+  capaDeSalto:
+    serializedVersion: 2
+    m_Bits: 64
+  capaTrampas:
+    serializedVersion: 2
+    m_Bits: 256
+  capaEscalera:
+    serializedVersion: 2
+    m_Bits: 512
+  capaSuelo:
+    serializedVersion: 2
+    m_Bits: 64
+  velocidadEscalada: 4
+  capaDeEscalera:
+    serializedVersion: 2
+    m_Bits: 512
